@@ -1,0 +1,180 @@
+:root {
+    /* Colors */
+    --clr-primary-tomato: hsl(4, 100%, 67%);
+    --clr-neutral-slate: hsl(234, 29%, 20%);
+    --clr-neutral-charcoal: hsl(235, 18%, 26%);
+    --clr-neutral-grey: hsl(0, 0%, 58%);
+    --clr-white: hsl(0, 0%, 100%);
+
+    /* Typography */
+    --ff-body: 'Roboto', sans-serif;
+    --fs-body: 1rem;
+    --fw-regular: 400;
+    --fw-bold: 700;
+}
+
+/* Box-sizing reset for all elements */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins and paddings for layout control */
+body,
+h1,
+p,
+ul,
+li,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+img,
+picture {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
+}
+
+input,
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+}
+
+body {
+    min-block-size: 100dvh;
+
+    font-family: var(--ff-body);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
+    line-height: 1.5;
+}
+
+/* ====== Styling ====== */
+
+.card-signup {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.card-signup__content {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1.5rem;
+    padding-block: 2.5rem 1.5rem;
+    gap: 1.5rem;
+}
+
+.card-signup__title {
+    font-size: 2.25rem;
+    font-weight: var(--fw-bold);
+    color: var(--clr-neutral-slate);
+    line-height: 1.2;
+}
+
+.card-signup__desc,
+.card-signup__list {
+    color: var(--clr-neutral-charcoal);
+}
+
+.card-signup__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.card-signup__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    /* margin-block-end: 0.625rem; */
+}
+
+.card-signup__list-icon {
+    flex-shrink: 0;
+    margin-block-start: 3px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    /* Uniform spacing between label, input, and button */
+}
+
+.signup-form__label-row {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-form__error {
+    display: none;
+}
+
+.signup-form__input,
+.signup-form__btn {
+    inline-size: 100%;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+}
+
+.signup-form__input {
+    border: 1px solid var(--clr-neutral-grey);
+}
+
+.signup-form__input:focus {
+    border-color: var(--clr-neutral-slate);
+    outline: none;
+}
+
+.signup-form__btn {
+    background-color: var(--clr-neutral-charcoal);
+    color: var(--clr-white);
+    font-weight: var(--fw-bold);
+}
+
+.signup-form__btn:hover {
+    background: linear-gradient(90deg, #ff527b, #ff6a3a);
+    box-shadow: 0 16px 32px hsla(4, 100%, 67%, 0.4);
+}
+
+.hidden {
+    display: none;
+}
+
+
+@media screen and (min-width:768px) {
+    body {
+        display: grid;
+        place-items: center;
+        background-color: var(--clr-neutral-charcoal);
+    }
+
+    .newsletter-container {
+        inline-size: min(60%, 800px);
+        background-color: var(--clr-white);
+    }
+
+}
+
+@media screen and (min-width:1024px) {
+    .newsletter-container {
+        border-radius: 1rem;
+    }
+
+    .card-signup {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1rem;
+    }
+}
