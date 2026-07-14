@@ -9,6 +9,9 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <!-- Font-Family -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +19,7 @@
 
   <!-- Stylesheet & Script -->
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 
 </head>
 
@@ -37,43 +40,58 @@
         <p class="card-signup__desc">Join 60,000+ product managers receiving monthly updates on:</p>
 
         <ul class="card-signup__list">
+
           <li class="card-signup__list-item">
             <!-- Decorative checkmark is hidden from screen readers -->
             <img src="assets/images/icon-list.svg" alt="" aria-hidden="true" class="card-signup__list-icon">
             <span>Product discovery and building what matters</span>
           </li>
+
           <li class="card-signup__list-item">
             <img src="assets/images/icon-list.svg" alt="" aria-hidden="true" class="card-signup__list-icon">
             <span>Measuring to ensure updates are a success</span>
           </li>
+
           <li class="card-signup__list-item">
             <img src="assets/images/icon-list.svg" alt="" aria-hidden="true" class="card-signup__list-icon">
             <span>And much more!</span>
           </li>
+
         </ul>
 
         <!-- Form Validation -->
         <form id="newsletter-form" class="signup-form" novalidate>
+
           <div class="signup-form__label-row">
             <label for="email" class="signup-form__label">Email address</label>
+
             <span id="error-msg" class="signup-form__error" aria-live="assertive">
-              Valid email required !
+              <i class="fa-solid fa-circle-info fa-shake"></i>
+              Valid email required
             </span>
+
           </div>
 
           <input type="email" id="email" placeholder="email@company.com" class="signup-form__input" autocomplete="off"
             aria-describedby="error-msg" required>
 
-          <button type="submit" class="signup-form__btn">Subscribe to monthly newsletter</button>
+          <button type="submit" id="submit-btn" class="signup-form__btn btn">Subscribe to monthly newsletter</button>
+
         </form>
+
       </div>
 
       <!-- COLUMN B: Responsive Image (Second in HTML, flipped visually in mobile CSS) -->
       <picture class="card-signup__image-wrapper">
+
         <source media="(min-width: 1024px)" srcset="assets/images/illustration-sign-up-desktop.svg">
+
         <source media="(min-width: 768px)" srcset="assets/images/illustration-sign-up-tablet.svg">
+
         <img src="assets/images/illustration-sign-up-mobile.svg" alt="" aria-hidden="true" class="card-signup__image">
+
       </picture>
+
     </section>
 
     <!-- ========================================== -->
@@ -89,7 +107,7 @@
           Please open it and click the button inside to confirm your subscription.
         </p>
       </div>
-      <button id="dismiss-btn" class="card-success__btn">Dismiss message</button>
+      <button id="dismiss-btn" class="card-success__btn btn">Dismiss message</button>
     </section>
 
   </main>

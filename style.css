@@ -52,20 +52,75 @@ button {
 
 body {
     min-block-size: 100dvh;
+    display: grid;
+    place-items: center;
 
     font-family: var(--ff-body);
     font-size: var(--fs-body);
     font-weight: var(--fw-regular);
     line-height: 1.5;
+
+    /* Enable Font Smoothing (Crisp Typography) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-color: var(--clr-neutral-charcoal);
 }
 
-/* ====== Styling ====== */
+/* ====== Common Styling ====== */
+
+.btn {
+    inline-size: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--clr-neutral-charcoal);
+    color: var(--clr-white);
+    font-weight: var(--fw-bold);
+
+    background: linear-gradient(90deg, var(--clr-neutral-charcoal) 50%, #ff527b 75%, #ff6a3a 100%);
+    background-size: 200% 100%;
+    background-position: left bottom;
+    transition: background-position 0.4s ease, box-shadow 0.2s ease;
+}
+
+.btn:focus-visible,
+.btn:hover {
+    outline: none;
+    background-position: right bottom;
+    box-shadow: 0 16px 32px hsla(4, 100%, 67%, 0.4);
+    cursor: pointer;
+}
+
+/* ====== Base Styling ====== */
+
+/* ==== Default card ==== */
+.newsletter-container {
+    background-color: var(--clr-white);
+    inline-size: min(100%, 375px);
+    overflow: hidden;
+}
 
 .card-signup {
     display: flex;
     flex-direction: column-reverse;
 }
 
+/* ==== Picture > img ~ setting ==== */
+.card-signup__image-wrapper {
+    display: block;
+    inline-size: 100%;
+    max-block-size: 284px;
+    overflow: hidden;
+}
+
+.card-signup__image {
+    inline-size: auto;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ==== Content Div ==== */
 .card-signup__content {
     display: flex;
     flex-direction: column;
@@ -89,40 +144,39 @@ body {
 .card-signup__list {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
 }
 
 .card-signup__list-item {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    /* margin-block-end: 0.625rem; */
 }
 
 .card-signup__list-icon {
     flex-shrink: 0;
-    margin-block-start: 3px;
+    margin-block-start: 0.2em;
 }
 
+/* ==== Form ==== */
 .signup-form {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    /* Uniform spacing between label, input, and button */
 }
 
 .signup-form__label-row {
-    font-size: 0.8rem;
     display: flex;
     justify-content: space-between;
+    font-size: 0.8rem;
 }
 
 .signup-form__error {
     display: none;
 }
 
-.signup-form__input,
-.signup-form__btn {
+/* ==== input ==== */
+.signup-form__input {
     inline-size: 100%;
     border-radius: 0.5rem;
     padding: 0.8rem;
@@ -132,49 +186,113 @@ body {
     border: 1px solid var(--clr-neutral-grey);
 }
 
-.signup-form__input:focus {
-    border-color: var(--clr-neutral-slate);
-    outline: none;
+.signup-form__input:focus-visible {
+    outline: 2px solid var(--clr-neutral-slate);
+    outline-offset: 3px;
 }
 
-.signup-form__btn {
-    background-color: var(--clr-neutral-charcoal);
-    color: var(--clr-white);
+.signup-form__input--error {
+    border-color: var(--clr-primary-tomato);
+    color: var(--clr-primary-tomato);
+    background-color: hsla(4, 100%, 67%, 0.15);
+}
+
+
+/* ==== SUCCESS CARD STYLING ==== */
+
+.card-success {
+    background-color: var(--clr-white);
+    min-block-size: 100dvh;
+    padding-inline: 1.5rem;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.card-success__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-self: center;
+}
+
+.card-success__icon {
+    max-inline-size: 4rem;
+}
+
+.card-success__title {
+    font-size: 2.25rem;
     font-weight: var(--fw-bold);
+    color: var(--clr-neutral-slate);
+    line-height: 1.1;
 }
 
-.signup-form__btn:hover {
-    background: linear-gradient(90deg, #ff527b, #ff6a3a);
-    box-shadow: 0 16px 32px hsla(4, 100%, 67%, 0.4);
+.card-success__desc {
+    color: var(--clr-neutral-charcoal);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (TABLET VIEW)
+   ========================================================================== */
+
+@media screen and (min-width:768px) {
+
+    .newsletter-container {
+        inline-size: max-content;
+        padding: 1.5rem;
+        background-color: var(--clr-white);
+        border-radius: 1.5rem;
+    }
+
+    .card-signup__image-wrapper {
+        max-block-size: none;
+    }
+
+    .card-signup__image {
+        inline-size: auto;
+        block-size: auto;
+    }
+
+    .card-success {
+        min-block-size: auto;
+        max-inline-size: 325px;
+        border-radius: 2rem;
+        gap: 2.5rem;
+        justify-content: flex-start;
+    }
+
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (desktop VIEW)
+   ========================================================================== */
+
+@media screen and (min-width:1024px) {
+
+    .card-signup {
+        inline-size: 800px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .card-signup__image {
+        inline-size: 100%;
+    }
+
+    .card-success {
+        min-block-size: auto;
+        max-inline-size: 425px;
+        border-radius: 2rem;
+    }
+
 }
 
 .hidden {
     display: none;
-}
-
-
-@media screen and (min-width:768px) {
-    body {
-        display: grid;
-        place-items: center;
-        background-color: var(--clr-neutral-charcoal);
-    }
-
-    .newsletter-container {
-        inline-size: min(60%, 800px);
-        background-color: var(--clr-white);
-    }
-
-}
-
-@media screen and (min-width:1024px) {
-    .newsletter-container {
-        border-radius: 1rem;
-    }
-
-    .card-signup {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        padding: 1rem;
-    }
 }
