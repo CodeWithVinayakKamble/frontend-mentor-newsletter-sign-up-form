@@ -175,6 +175,12 @@ body {
     display: none;
 }
 
+.signup-form__error--novalid {
+    border-color: var(--clr-primary-tomato);
+    color: var(--clr-primary-tomato);
+    font-size: 1rem;
+}
+
 /* ==== input ==== */
 .signup-form__input {
     inline-size: 100%;
@@ -234,6 +240,10 @@ body {
     color: var(--clr-neutral-charcoal);
 }
 
+.card-signup.hidden,
+.card-success.hidden {
+    display: none;
+}
 
 /* ==========================================================================
    RESPONSIVE BREAKPOINTS (TABLET VIEW)
@@ -291,8 +301,4 @@ body {
         border-radius: 2rem;
     }
 
-}
-
-.hidden {
-    display: none;
 }
